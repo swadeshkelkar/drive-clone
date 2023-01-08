@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Drive from "./components/Drive";
+import Auth from "./components/Auth";
+import { Routes, Route } from "react-router-dom";
+import { database } from "./firebase";
+import Folder from "./components/Folder";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path='/' element={<Auth />} />
+        <Route path='/drive/' element={<Drive database={database} />} />
+        <Route path='/folder/:id' element={<Folder database={database} />} />
+      </Routes>
     </div>
   );
 }
